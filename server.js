@@ -6,6 +6,8 @@ const io = require('socket.io')(server);
 const cv = require('opencv4nodejs');
 
 const wCap = new cv.VideoCapture(0);
+wCap.set(cv.CAP_PROP_FRAME_WIDTH, 300);
+wCap.set(cv.CAP_PROP_FRAME_HEIGHT, 300);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
