@@ -5,6 +5,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const cv = require('opencv4nodejs');
 
+const FPS = 10;
 const wCap = new cv.VideoCapture(0);
 wCap.set(cv.CAP_PROP_FRAME_WIDTH, 300);
 wCap.set(cv.CAP_PROP_FRAME_HEIGHT, 300);
@@ -18,7 +19,7 @@ setInterval(() => {
   const image = cv.imencode('.jpg', frame).toString('base64');
 
   io.emit('image', image);
-}, 10000);
+}, 1000 / FPS);
 
 server.listen(5000, () => {
   console.log('App listening on port 5000!');

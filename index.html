@@ -9,13 +9,11 @@
                   src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
       </head>
       <body>
-            Hello
             <img src="" alt="" id="image">
       </body>
       <script>
             const socket = io.connect('http://localhost:5000');
             socket.on('image', (image) => {
-                        console.log(data)
                   const imageElm =       document.getElementById('image');
                   imageElm.src = `data:image/jpeg;base64,${image}`
             });
